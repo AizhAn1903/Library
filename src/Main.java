@@ -29,7 +29,7 @@ public class Main {
                     System.out.println("ведите ID книги");
                     String id = scanner.nextLine();
                     String con = name.concat( "- id:" + id);
-
+                    System.out.println(name + id + " Книга добавлена. ");
                     list.add(con);
 
                     break;
@@ -41,7 +41,7 @@ public class Main {
                     System.out.println("ведите ID книги");
                     String id1 = scanner.nextLine();
                     String con1 = name1.concat( "- id:" + id1);
-
+                    System.out.println(name1 + id1 + " Книга добавлена. ");
 
                     list.remove(con1);
                     list2.add(con1);
@@ -54,6 +54,7 @@ public class Main {
                     System.out.println("ведите ID книги");
                     String id2 = scanner.nextLine();
                     String con2 = name2.concat( "- id:" + id2);
+                    System.out.println(name2 + id2 + " Книга добавлена. ");
 
                     list2.remove(con2);
                     list.add(con2);
@@ -82,16 +83,21 @@ public class Main {
                     break;
                 case 6:
                     scanner.nextLine();
-                    System.out.println("Введите название книги");
+                    System.out.println("Введите название книги для поиска: ");
                     String search = scanner.nextLine();
-                    if (list.contains(search)) {
-                        System.out.println("Книга найдена");
-                    } else {
-                        System.out.println("Книга не найдена");
+                    boolean found = false;
+
+                    for (String book : list) {
+                        if (book.toLowerCase().contains(search.toLowerCase())) {
+                            System.out.println("Книга найдена: " + book);
+                            found = true;
+                            break;
+                        }
                     }
 
-
-
+                    if (!found) {
+                        System.out.println("Книга не найдена");
+                    }
                     break;
                 case 7:
                     System.out.println("Вы вышли");
