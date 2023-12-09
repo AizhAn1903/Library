@@ -27,9 +27,9 @@ public class Main {
                     System.out.println("Введите название книги ");
                     String name = scanner.nextLine();
                     System.out.println("ведите ID книги");
-                    String id = scanner.nextLine();
-                    String con = name.concat( "- id:" + id);
-                    System.out.println(name + id + " Книга добавлена. ");
+                    int id = scanner.nextInt();
+                    String con = name.concat( "\n" + "ID книги: " + id);
+                    System.out.println("Название книги: " + name + " " + "\n" + "ID книги: " + id + "\n" + "\n" + "Книга добавлена. " + "\n");
                     list.add(con);
 
                     break;
@@ -39,9 +39,9 @@ public class Main {
                     System.out.println("Введите название книги ");
                     String name1 = scanner.nextLine();
                     System.out.println("ведите ID книги");
-                    String id1 = scanner.nextLine();
-                    String con1 = name1.concat( "- id:" + id1);
-                    System.out.println(name1 + id1 + " Книга добавлена. ");
+                    int id1 = scanner.nextInt();
+                    String con1 = name1.concat( "\n" + "ID книги: " + "\n" + id1);
+                    System.out.println(name1 + " " + id1 + " Книга выдана. " + "\n");
 
                     list.remove(con1);
                     list2.add(con1);
@@ -52,22 +52,22 @@ public class Main {
                     System.out.println("Введите название книги ");
                     String name2 = scanner.nextLine();
                     System.out.println("ведите ID книги");
-                    String id2 = scanner.nextLine();
-                    String con2 = name2.concat( "- id:" + id2);
-                    System.out.println(name2 + id2 + " Книга добавлена. ");
+                    int id2 = scanner.nextInt();
+                    String con2 = name2.concat( "\n" + "ID книги: " + id2);
+                    System.out.println("Название книги: " + name2 + "\n" + "ID книги: "
+                            + id2 + "\n" + "Возврат книги успешно произведен. " + "\n");
 
                     list2.remove(con2);
                     list.add(con2);
 
-                    System.out.println(list);
                     break;
                 case 4:
                     if (list.isEmpty()) {
-                        System.out.println("Вы пока не добавили книги");
+                        System.out.println("Вы пока не добавили книги" + "\n");
                     } else {
-                        System.out.println(" Список книг в библиотеке");
+                        System.out.println("Список книг в библиотеке:" + "\n");
                         for (String s : list) {
-                            System.out.println(s);
+                            System.out.println("Название книги: " + s + "\n");
                         }
                     }
                     break;
@@ -75,9 +75,9 @@ public class Main {
                     if (list2.isEmpty()) {
                         System.out.println("Нет выданых книг");
                     } else {
-                        System.out.println(" Список выданых книг");
+                        System.out.println("Список выданых книг:" + "\n");
                         for (String s : list2) {
-                            System.out.println(s);
+                            System.out.println("Название книги: " + s + "\n");
                         }
                     }
                     break;
@@ -85,25 +85,27 @@ public class Main {
                     scanner.nextLine();
                     System.out.println("Введите название книги для поиска: ");
                     String search = scanner.nextLine();
+                    System.out.println("Введите ID книги для поиска: ");
+                    int search2 = scanner.nextInt();
                     boolean found = false;
 
                     for (String book : list) {
                         if (book.toLowerCase().contains(search.toLowerCase())) {
-                            System.out.println("Книга найдена: " + book);
+                            System.out.println("Книга найдена: " + book + "\n");
                             found = true;
                             break;
                         }
                     }
 
                     if (!found) {
-                        System.out.println("Книга не найдена");
+                        System.out.println("Книга не найдена." + "\n");
                     }
                     break;
                 case 7:
-                    System.out.println("Вы вышли");
+                    System.out.println("Вы вышли.");
                     break;
                 default:
-                    System.out.println("Ошибка");
+                    System.out.println("Ошибка.");
                     break;
 
 
