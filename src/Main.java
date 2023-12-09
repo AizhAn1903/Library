@@ -1,3 +1,5 @@
+import java.awt.print.Book;
+import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -28,22 +30,22 @@ public class Main {
                     String name = scanner.nextLine();
                     System.out.println("ведите ID книги");
                     int id = scanner.nextInt();
-                    String con = name.concat( "\n" + "ID книги: " + id);
-                    System.out.println("Название книги: " + name + " " + "\n" + "ID книги: " + id + "\n" + "\n" + "Книга добавлена. " + "\n");
+                    String con = name.concat( "\n" + "ID книги: " + "\n" + id);
+                    System.out.println("Название книги: " + name + " " + "\n" + "ID книги: " + "\n" + id + "\n" + "Книга добавлена. " + "\n");
                     list.add(con);
 
                     break;
                 case 2:
-
                     scanner.nextLine();
                     System.out.println("Введите название книги ");
                     String name1 = scanner.nextLine();
                     System.out.println("ведите ID книги");
                     int id1 = scanner.nextInt();
                     String con1 = name1.concat( "\n" + "ID книги: " + "\n" + id1);
-                    System.out.println(name1 + " " + id1 + " Книга выдана. " + "\n");
+                    System.out.println("Название книги: " + name1 + "\n" + "" +
+                            "ID книги: " + "\n" + "\n" + id1 + "\n" + "Книга выдана. " + "\n");
 
-                    list.remove(con1);
+                    list.removeIf(s -> s.contains(name1 + "\n"));
                     list2.add(con1);
                     break;
                 case 3:
@@ -53,9 +55,9 @@ public class Main {
                     String name2 = scanner.nextLine();
                     System.out.println("ведите ID книги");
                     int id2 = scanner.nextInt();
-                    String con2 = name2.concat( "\n" + "ID книги: " + id2);
+                    String con2 = name2.concat( "\n" + "ID книги: " + "\n" + id2);
                     System.out.println("Название книги: " + name2 + "\n" + "ID книги: "
-                            + id2 + "\n" + "Возврат книги успешно произведен. " + "\n");
+                            + "\n" + id2 + "\n" + "Возврат книги успешно произведен. " + "\n");
 
                     list2.remove(con2);
                     list.add(con2);
@@ -66,8 +68,10 @@ public class Main {
                         System.out.println("Вы пока не добавили книги" + "\n");
                     } else {
                         System.out.println("Список книг в библиотеке:" + "\n");
-                        for (String s : list) {
-                            System.out.println("Название книги: " + s + "\n");
+                        for (String s1 : list) {
+                            System.out.println("Название книги: " + s1 + "\n");
+                            {
+                            }
                         }
                     }
                     break;
@@ -76,8 +80,8 @@ public class Main {
                         System.out.println("Нет выданых книг");
                     } else {
                         System.out.println("Список выданых книг:" + "\n");
-                        for (String s : list2) {
-                            System.out.println("Название книги: " + s + "\n");
+                        for (String s2 : list2) {
+                            System.out.println("Название книги: " + s2);
                         }
                     }
                     break;
@@ -85,8 +89,7 @@ public class Main {
                     scanner.nextLine();
                     System.out.println("Введите название книги для поиска: ");
                     String search = scanner.nextLine();
-                    System.out.println("Введите ID книги для поиска: ");
-                    int search2 = scanner.nextInt();
+
                     boolean found = false;
 
                     for (String book : list) {
