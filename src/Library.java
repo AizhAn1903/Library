@@ -1,12 +1,12 @@
 public class Library {
         private String name;
         private String author;
-        private Boolean status;
+
         private Integer id;
-        public Library(String name, String author, Boolean status, Integer id) {
+        public Library(String name, String author, Integer id) {
             this.name = name;
             this.author = author;
-            this.status = status;
+
             this.id = id;
 
         }
@@ -19,10 +19,6 @@ public class Library {
             return author;
         }
 
-        public Boolean getStatus() {
-            return status;
-        }
-
 
         public Integer getId() {
             return id;
@@ -32,6 +28,6 @@ public class Library {
 
         @Override
         public String toString() {
-            return "id: "+id+ " "+ name +" "+"("+ author +")"+ " статус " + status;
+            return "id: "+id+ " "+ name +" "+"("+ author +")" ;
         }
 }
