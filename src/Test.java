@@ -28,7 +28,7 @@ public class Test {
         int answer = 0;
         while (answer != 7) {
             System.out.println("Выберите действие:");
-            System.out.println("1 - Просмотр доступных книг ");
+            System.out.println("1 - Выдача книг ");
             System.out.println("2 - Добавить новую книгу ");
             System.out.println("3 - Возврат книги");
             System.out.println("4 - Список полученных книг");
@@ -41,16 +41,23 @@ public class Test {
                     for (Library lib1 : lib) {
                         System.out.println(lib1);
                     }
-                    System.out.println("Выберите книгу (id)");
+                    System.out.println("Выберите книгу (id), или введите 0 чтобы вернутся в меню");
                     int select = scanner.nextInt();
+                    boolean bookFound = false;
+
                     for (Library lib1 : lib) {
                         if (lib1.getId() == select) {
                             storage.add(lib1);
                             lib.remove(lib1);
                             System.out.println("Книга успешно получена");
                             System.out.println("______________________________");
+                            bookFound = true;
                             break;
                         }
+                    }
+
+                    if (!bookFound && select != 0) {
+                        System.out.println("Неверное id книги");
                     }
                     break;
                 case 2:
@@ -63,22 +70,27 @@ public class Test {
                     int id = scanner.nextInt();
                     Library newBook = new Library(name, nameOfAuthor, id);
                     lib.add(newBook);
-                    System.out.println(name + id + " Книга добавлена. ");
+                    System.out.println(id + " " + name + " " + nameOfAuthor + " книга добавлена. ");
                     System.out.println("______________________________________");
                     break;
                 case 3:
                     System.out.println("Введите id книги которую вы брали");
                     int idBook = scanner.nextInt();
+                    boolean bookId = false;
                     for (int i = 0; i < storage.size(); i++) {
                         Library bookReturn = storage.get(i);
                         if (bookReturn.getId() == idBook) {
                             lib.add(bookReturn);
                             storage.remove(i);
                             System.out.println("Вы успешно возвратили книгу");
+                            System.out.println("______________________________");
+                            bookId = true;
                             break;
                         }
                     }
-                    System.out.println("______________________________");
+                    if (!bookId) {
+                        System.out.println("Неверное id книги");
+                    }
                     break;
                 case 4:
                     if (storage.isEmpty()) {
@@ -111,7 +123,7 @@ public class Test {
                     break;
                 case 6:
                     System.out.println("Выполняется выход...");
-                    break;
+                    System.exit(0);
                 default:
                     System.out.println("Ошибка,повторите попытку");
                     break;
