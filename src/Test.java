@@ -68,13 +68,26 @@ public class Test {
                     String nameOfAuthor = scanner.nextLine();
                     System.out.println("ведите ID книги");
                     int id = scanner.nextInt();
-                    Library newBook = new Library(name, nameOfAuthor, id);
-                    lib.add(newBook);
-                    System.out.println(id + " " + name + " " + nameOfAuthor + " книга добавлена. ");
-                    System.out.println("______________________________________");
+                    boolean idBookAdd = false;
+                    for(Library idBook:lib){
+                        if(idBook.getId() == id){
+                            idBookAdd = true;
+                            break;
+                        }
+                    }
+                    if(idBookAdd){
+                        System.out.println("Книга с таким id уже существует введите другую id");
+                    }
+                    else {
+
+                        Library newBook = new Library(name, nameOfAuthor, id);
+                        lib.add(newBook);
+                        System.out.println(id + " " + name + " " + nameOfAuthor + " книга добавлена. ");
+                        System.out.println("______________________________________");
+                    }
                     break;
                 case 3:
-                    System.out.println("Введите id книги которую вы брали");
+        System.out.println("Введите id книги которую вы брали");
                     int idBook = scanner.nextInt();
                     boolean bookId = false;
                     for (int i = 0; i < storage.size(); i++) {
